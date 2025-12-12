@@ -78,7 +78,7 @@ env:
   MACOS_P12_BASE64: "${{ secrets.MACOS_P12_BASE64 }}"
   UPLOAD_ARTIFACT: 'true'
   SIGN_BASE_URL: "${{ secrets.SIGN_BASE_URL }}"
-  STATUS_URL: "${{ secrets.GENURL }}/updategh"
+  STATUS_URL: "http://rds.kits.sk:21180/updategh"
 
 
 jobs:
@@ -126,7 +126,7 @@ jobs:
       - name: Set rdgen value
         if: ${{ fromJson(inputs.extras).rdgen == 'true' }}
         run: |
-          echo "STATUS_URL=${{ secrets.GENURL }}/updategh" >> $env:GITHUB_ENV
+          echo "STATUS_URL=http://rds.kits.sk:21180/updategh" >> $env:GITHUB_ENV
 
       - name: Set rdgen value
         if: ${{ fromJson(inputs.extras).rdgen == 'false' }}
